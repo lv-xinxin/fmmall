@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(value = "User对象",description = "用户/卖家信息")
-public class User {
+public class Users {
 
     private int userId;
     private String username;

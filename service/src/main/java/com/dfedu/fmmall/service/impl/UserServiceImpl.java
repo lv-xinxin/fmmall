@@ -2,7 +2,7 @@ package com.dfedu.fmmall.service.impl;
 
 import com.dfedu.fmmall.service.UserService;
 import com.qfedu.fmmall.dao.UserDao;
-import com.qfedu.fmmall.entity.User;
+import com.qfedu.fmmall.entity.Users;
 import com.qfedu.fmmall.utils.MD5Utils;
 import com.qfedu.fmmall.vo.ResultVO;
 
@@ -27,13 +27,14 @@ public class UserServiceImpl implements UserService {
     public ResultVO userResgit(String name, String pwd) {
         synchronized (this) {
             //1.根据⽤户查询，这个⽤户是否已经被注册
-            User user = userDAO.queryUserByName(name);
+            Users user = userDAO.queryUserByName(name);
             //2.如果没有被注册则进⾏保存操作
             if (user == null) {
                 String md5Pwd = MD5Utils.md5(pwd);
-                user = new User();
+                user = new Users();
                 user.setUsername(name);
                 user.setPassword(md5Pwd);
+                user.setUserImg("img/default.png");
                 user.setUserRegtime(new Date());
                 user.setUserModtime(new Date());
                 int i = userDAO.insertUser(user);
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResultVO checkLogin(String name, String pwd) {
-        User user = userDAO.queryUserByName(name);
+        Users user = userDAO.queryUserByName(name);
         if(user == null){
             return new ResultVO(10001,"登录失败，⽤户名不存在！",null);
         }else{

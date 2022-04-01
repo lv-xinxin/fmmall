@@ -5,11 +5,11 @@
 
 
     <insert id="insertUser">
-        insert into users(username,password,user_regtime,user_modtime)
-        values(#{username},#{password},#{userRegtime},#{userModtime})
+        insert into users(username,password,user_img,user_regtime,user_modtime)
+        values(#{username},#{password},,#{userImg},#{userRegtime},#{userModtime})
     </insert>
 
-    <resultMap id="userMap" type="User">
+    <resultMap id="userMap" type="Users">
         <id column="user_id" property="userId"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>

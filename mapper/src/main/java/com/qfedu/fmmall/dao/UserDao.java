@@ -1,6 +1,6 @@
 package com.qfedu.fmmall.dao;
 
-import com.qfedu.fmmall.entity.User;
+import com.qfedu.fmmall.entity.Users;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -12,14 +12,14 @@ public interface UserDao {
      * @param user
      * @return
      */
-    public int insertUser(User user);
+    public int insertUser(Users user);
 
     /**
      * 根据用户查询用户信息
      * @param name
      * @return
      */
-    public User queryUserByName(String name);
+    public Users queryUserByName(String name);
 
 
 
